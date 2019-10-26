@@ -13,7 +13,8 @@ This is a template for Go CLI tools. Major features are:
 ## Setup
 
 1. Create a new repo from this template
-2. `$ ./setup.sh <project name>`
+2. `$ ./setup.sh`
+3. Follow the prompts
 
 ## Important `make` targets
 
