@@ -13,6 +13,6 @@ currently being supported with security updates.
 ## Reporting a Vulnerability
 
 To report a security vulnerability to `goclitem`,
-please [file an issue](https://github.com/dnnrly/go-cmd-template/issues/new?assignees=&labels=&template=security.md&title=)
+please [file an issue](https://github.com/dnnrly/go-cmd-template/issues/new?assignees=&labels=&template=bug_report.md&title=)
 at this repository's Issues page.
 
