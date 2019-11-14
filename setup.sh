@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 while getopts “d” opt; do
   case $opt in
     d) ECHO=echo ;;
@@ -12,14 +14,6 @@ read ORG
 echo "Enter the name of your project:"
 read NAME
 
-set -e
-
-${ECHO} mv ./cmd/goclitem ./cmd/${NAME}
-${ECHO} mv ./cmd/${NAME}/goclitem.go ./cmd/${NAME}/${NAME}.go
-${ECHO} mv ./cmd/${NAME}/goclitem_test.go ./cmd/${NAME}/${NAME}_test.go
-${ECHO} mv ./goclitem.go ./${NAME}.go
-${ECHO} mv ./goclitem_test.go ./${NAME}_test.go
-
 update() {
     sed -i -e "s/dnnrly/${ORG}/g" ${1}
     sed -i -e "s/goclitem/${NAME}/g" ${1}
@@ -29,4 +23,10 @@ for f in `find . -type f -not -iwholename '*.git/*' -not -iwholename '*tmp*' -no
 do
     ${ECHO} update $f
 done
+
+${ECHO} mv ./cmd/goclitem ./cmd/${NAME}
+${ECHO} mv ./cmd/${NAME}/goclitem.go ./cmd/${NAME}/${NAME}.go
+${ECHO} mv ./cmd/${NAME}/goclitem_test.go ./cmd/${NAME}/${NAME}_test.go
+${ECHO} mv ./goclitem.go ./${NAME}.go
+${ECHO} mv ./goclitem_test.go ./${NAME}_test.go
 

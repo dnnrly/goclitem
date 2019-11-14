@@ -16,6 +16,8 @@ This is a template for Go CLI tools. Major features are:
 2. `$ ./setup.sh`
 3. Follow the prompts
 
+Use the `-d` option to see what will be modified without changing any files.
+
 ## Important `make` targets
 
 * `deps` - downloads all of the deps you need to build, test, and release
