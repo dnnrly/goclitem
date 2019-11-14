@@ -23,6 +23,7 @@ Use the `-d` option to see what will be modified without changing any files.
 * `deps` - downloads all of the deps you need to build, test, and release
 * `build` - builds your application
 * `test` - runs unit tests
+* `ci-test` - run tests for CI validation
 * `acceptance-test` - run the acceptance tests
 * `lint` -  run linting
 * `update` - update Go dependencies
