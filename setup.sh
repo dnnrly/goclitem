@@ -25,8 +25,6 @@ do
 done
 
 ${ECHO} mv ./cmd/goclitem ./cmd/${NAME}
-${ECHO} mv ./cmd/${NAME}/goclitem.go ./cmd/${NAME}/${NAME}.go
-${ECHO} mv ./cmd/${NAME}/goclitem_test.go ./cmd/${NAME}/${NAME}_test.go
 ${ECHO} mv ./goclitem.go ./${NAME}.go
 ${ECHO} mv ./goclitem_test.go ./${NAME}_test.go
 
