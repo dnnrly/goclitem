@@ -27,7 +27,7 @@ jobs:
       env:
         GO111MODULE: on
     - name: Perform release
-      run: ./bin/goreleaser release
+      run: make release
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GO111MODULE: on
