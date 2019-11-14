@@ -14,7 +14,7 @@ NAME=goclitem
 
 export GO111MODULE=on
 export GOPROXY=https://proxy.golang.org
-export PATH := ./bin:$(PATH)
+export PATH := $(BASE_DIR)/bin:$(PATH)
 
 install: deps
 
@@ -23,7 +23,8 @@ build:
 
 clean:
 	rm -f $(NAME)
-	rm -rf dist
+	rm -rf dist/
+	rm -rf cmd/$(NAME)/dist
 
 clean-deps:
 	rm -rf ./bin
@@ -72,7 +73,7 @@ lint:
 	golangci-lint run
 
 release: clean
-	$(GORELEASER_BIN) $(PUBLISH_PARAM)
+	cd cmd/$(NAME) ; $(GORELEASER_BIN) $(PUBLISH_PARAM)
 
 update:
 	$(GO_BIN) get -u

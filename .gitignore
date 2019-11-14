@@ -19,3 +19,4 @@ libexec/
 bin/
 tmp/
 share/
+dist/
