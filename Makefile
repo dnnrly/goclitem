@@ -42,8 +42,6 @@ clean-deps:
 test-deps: ./bin/bats ./bin/golangci-lint
 	$(GO_BIN) get -v ./...
 	$(GO_BIN) mod tidy
-	GO111MODULE=off $(GO_BIN) get gopkg.in/mikefarah/yq.v2
-	$(GO_BIN) mod tidy
 
 ./bin:
 	mkdir ./bin
