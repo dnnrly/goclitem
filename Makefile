@@ -16,7 +16,8 @@ export GO111MODULE=on
 export GOPROXY=https://proxy.golang.org
 export PATH := $(BASE_DIR)/bin:$(PATH)
 
-install: deps
+install:
+        $(GO_BIN) install -v ./cmd/$(NAME)
 
 build:
 	$(GO_BIN) build -v ./cmd/$(NAME)
