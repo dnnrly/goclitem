@@ -47,9 +47,23 @@ $ cd goclitem
 $ make install
 ```
 
+### Running Unit Tests
+
+```bash
+$ make test
+```
+
+### Running Acceptance tests
+
+```bash
+$ make deps
+$ make build acceptance-test
+```
+
 ## Important `make` targets
 
 * `deps` - downloads all of the deps you need to build, test, and release
+* `install` - installs your application
 * `build` - builds your application
 * `test` - runs unit tests
 * `ci-test` - run tests for CI validation
