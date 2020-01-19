@@ -24,8 +24,8 @@ Use the `-d` option to see what will be modified without changing any files.
 
 One Paragraph of project description goes here
 
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dnnrly/goclitem)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dnnrly/goclitem/Validate%20for%20PR)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/dnnrly/goclitem)](https://github.com/dnnrly/goclitem/releases/latest)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/dnnrly/goclitem/Release%20workflow)](https://github.com/dnnrly/goclitem/actions?query=workflow%3A%22Release+workflow%22)
 [![report card](https://goreportcard.com/badge/github.com/dnnrly/goclitem)](https://goreportcard.com/report/github.com/dnnrly/goclitem)
 [![godoc](https://godoc.org/github.com/dnnrly/goclitem?status.svg)](http://godoc.org/github.com/dnnrly/goclitem)
 
