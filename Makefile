@@ -41,6 +41,7 @@ clean-deps:
 	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.22.2
 
 test-deps: ./bin/bats ./bin/golangci-lint
+	$(GO_BIN) get github.com/mfridman/tparse
 	$(GO_BIN) get -v ./...
 	$(GO_BIN) mod tidy
 
@@ -60,13 +61,13 @@ build-deps: ./bin/goreleaser
 deps: build-deps test-deps
 
 test:
-	$(GO_BIN) test ./...
+	$(GO_BIN) test -json ./... | tparse -all
 
 acceptance-test:
 	bats --tap test/*.bats
 
 ci-test:
-	$(GO_BIN) test -race -coverprofile=coverage.txt -covermode=atomic ./...
+	$(GO_BIN) test -race -coverprofile=coverage.txt -covermode=atomic -json ./... | tparse -all
 
 lint:
 	golangci-lint run
@@ -80,3 +81,6 @@ update:
 	make test
 	make install
 	$(GO_BIN) mod tidy
+
+.PHONY: install build clean clean-deps test-deps build-deps deps test acceptance-test ci-test lint release update
+
