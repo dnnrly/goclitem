@@ -38,7 +38,7 @@ clean-deps:
 	./tmp/bats/install.sh .
 
 ./bin/golangci-lint:
-	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.17.1
+	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.22.2
 
 test-deps: ./bin/bats ./bin/golangci-lint
 	$(GO_BIN) get -v ./...
@@ -51,7 +51,7 @@ test-deps: ./bin/bats ./bin/golangci-lint
 	mkdir ./tmp
 
 ./bin/goreleaser: ./bin ./tmp
-	$(CURL_BIN) --fail -L -o ./tmp/goreleaser.tar.gz https://github.com/goreleaser/goreleaser/releases/download/v0.117.2/goreleaser_Linux_x86_64.tar.gz
+	$(CURL_BIN) --fail -L -o ./tmp/goreleaser.tar.gz https://github.com/goreleaser/goreleaser/releases/download/v0.124.1/goreleaser_Linux_x86_64.tar.gz
 	gunzip -f ./tmp/goreleaser.tar.gz
 	tar -C ./bin -xvf ./tmp/goreleaser.tar
 
