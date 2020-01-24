@@ -29,6 +29,11 @@ One Paragraph of project description goes here
 [![report card](https://goreportcard.com/badge/github.com/dnnrly/goclitem)](https://goreportcard.com/report/github.com/dnnrly/goclitem)
 [![godoc](https://godoc.org/github.com/dnnrly/goclitem?status.svg)](http://godoc.org/github.com/dnnrly/goclitem)
 
+![GitHub watchers](https://img.shields.io/github/watchers/dnnrly/goclitem?style=social)
+![GitHub stars](https://img.shields.io/github/stars/dnnrly/goclitem?style=social)
+[![Twitter URL](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fgithub.com%2Fdnnrly%2Fgoclitem)](https://twitter.com/intent/tweet?url=https://github.com/dnnrly/goclitem)
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
