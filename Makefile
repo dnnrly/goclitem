@@ -40,7 +40,11 @@ clean-deps:
 ./bin/golangci-lint:
 	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.22.2
 
-test-deps: ./bin/bats ./bin/golangci-lint
+./bin/tparse: ./bin ./tmp
+	curl -sfL -o ./tmp/tparse.tar.gz https://github.com/mfridman/tparse/releases/download/v0.7.4/tparse_0.7.4_Linux_x86_64.tar.gz
+	tar -xf ./tmp/tparse.tar.gz -C ./bin
+
+test-deps: ./bin/tparse ./bin/bats ./bin/golangci-lint
 	$(GO_BIN) get github.com/mfridman/tparse
 	$(GO_BIN) install github.com/mfridman/tparse
 	$(GO_BIN) get -v ./...
