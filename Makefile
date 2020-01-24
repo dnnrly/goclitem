@@ -42,6 +42,7 @@ clean-deps:
 
 test-deps: ./bin/bats ./bin/golangci-lint
 	$(GO_BIN) get github.com/mfridman/tparse
+	$(GO_BIN) install github.com/mfridman/tparse
 	$(GO_BIN) get -v ./...
 	$(GO_BIN) mod tidy
 
