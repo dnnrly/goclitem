@@ -37,24 +37,21 @@ clean: ## remove build artifacts and release directories
 clean-deps: ## remove dependency artifacts in the working director
 	rm -rf ./bin
 	rm -rf ./tmp
-	rm -rf ./libexec
-	rm -rf ./share
-
-./bin/bats: ./bin ./tmp
-	git clone https://github.com/bats-core/bats-core.git ./tmp/bats
-	./tmp/bats/install.sh .
 
 ./bin/golangci-lint:
 	curl -sfL https://install.goreleaser.com/github.com/golangci/golangci-lint.sh | sh -s v1.40.1
 
 ./bin/tparse: ./bin ./tmp
-	curl -sfL -o ./tmp/tparse.tar.gz https://github.com/mfridman/tparse/releases/download/v0.7.4/tparse_0.8.3_Linux_x86_64.tar.gz
+	curl -sfL -o ./tmp/tparse.tar.gz https://github.com/mfridman/tparse/releases/download/v0.8.3/tparse_0.8.3_Linux_x86_64.tar.gz
 	tar -xf ./tmp/tparse.tar.gz -C ./bin
 
+./bin/godog: ./bin ./tmp
+	curl --fail -L -o ./tmp/godog.tar.gz https://github.com/cucumber/godog/releases/download/v0.11.0/godog-v0.11.0-linux-amd64.tar.gz
+	tar -xf ./tmp/godog.tar.gz -C ./tmp
+	cp ./tmp/godog-v0.11.0-linux-amd64/godog ./bin
+
 .PHONY: test-deps
-test-deps: ./bin/tparse ./bin/bats ./bin/golangci
-	$(GO_BIN) install github.com/mfridman/tparse
-	$(GO_BIN) get -v ./...
+test-deps: ./bin/tparse ./bin/bats ./bin/golangci ./bin/godog
 
 ./bin:
 	mkdir ./bin
@@ -79,7 +76,7 @@ test: ## run unit tests and format for human consumption
 
 .PHONY: acceptance-test
 acceptance-test: ## run acceptance tests against the build goclitem
-	bats --tap test/*.bats
+	cd test && godog -t @Acceptance
 
 .PHONY: ci-test
 ci-test: ## ci target - run tests to generate coverage data
