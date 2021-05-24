@@ -88,7 +88,7 @@ lint: ## run linting
 
 .PHONY: release
 release: clean ## build release artifacts and upload to github
-	cd cmd/$(NAME) ; $(GORELEASER_BIN) $(PUBLISH_PARAM)
+	$(GORELEASER_BIN) $(PUBLISH_PARAM)
 
 .PHONY: update
 update: ## update packages
