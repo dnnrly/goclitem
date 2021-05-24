@@ -51,7 +51,7 @@ clean-deps: ## remove dependency artifacts in the working director
 	cp ./tmp/godog-v0.11.0-linux-amd64/godog ./bin
 
 .PHONY: test-deps
-test-deps: ./bin/tparse ./bin/bats ./bin/golangci ./bin/godog
+test-deps: ./bin/tparse ./bin/golangci-lint ./bin/godog
 
 ./bin:
 	mkdir ./bin
