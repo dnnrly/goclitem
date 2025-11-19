@@ -40,11 +40,19 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+What things you need to build the software and how to install them:
 
+#### `tparse`
+
+[tparse](https://github.com/mfridman/tparse) helps to turn verbose default Go testing output something more friendly.
+
+```shell
+go install github.com/mfridman/tparse@latest
 ```
-Give examples
-```
+
+### `golangci-lint`
+
+Instructions for installing the linter can be found [here](https://golangci-lint.run/docs/welcome/install/#local-installation).
 
 ### Installing
 
@@ -69,16 +77,15 @@ $ make build acceptance-test
 
 ## Important `make` targets
 
-* `deps` - downloads all of the deps you need to build, test, and release
-* `install` - installs your application
-* `build` - builds your application
-* `test` - runs unit tests
-* `ci-test` - run tests for CI validation
-* `acceptance-test` - run the acceptance tests
-* `lint` -  run linting
-* `update` - update Go dependencies
-* `clean` - clean project dependencies
-* `clean-deps` - remove all of the build dependencies too
+
+* `acceptance-test` - run acceptance tests
+* `build` - build the application
+* `ci-test` - ci target - run tests to generate coverage data
+* `coverage-report` - collate the coverage data
+* `generate` - generate mocks and other assets
+* `help` - print help message
+* `lint` - run linting with golangci-lint
+* `test` - run unit tests with tparse
 
 
 ## Contributing
