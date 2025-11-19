@@ -2,14 +2,14 @@ package test_test
 
 import (
 	"fmt"
+	"os"
 	"os/exec"
 	"strings"
 
-	"github.com/cucumber/godog"
 	"github.com/stretchr/testify/assert"
 )
 
-//nolint: unused
+// nolint: unused
 type testContext struct {
 	err      error
 	cmdInput struct {
@@ -25,6 +25,15 @@ type testContext struct {
 // make testify assertions work
 func (c *testContext) Errorf(format string, args ...interface{}) {
 	c.err = fmt.Errorf(format, args...)
+}
+
+func (c *testContext) theAppRunsWithoutArgs() error {
+	cmd := exec.Command("../goclitem")
+	output, err := cmd.CombinedOutput()
+	c.cmdResult.Output = string(output)
+	c.cmdResult.Err = err
+
+	return nil
 }
 
 func (c *testContext) theAppRunsWithParameters(args string) error {
@@ -60,28 +69,14 @@ func (c *testContext) theAppOutputDoesNotContain(unexpected string) error {
 	return c.err
 }
 
-//nolint: unused
-func InitializeTestSuite(ctx *godog.TestSuiteContext) {
-	ctx.BeforeSuite(func() {})
-}
+func (c *testContext) aFileExists(file string) error {
+	f, err := os.Open(file)
+	defer f.Close()
 
-//nolint: unused
-func InitializeScenario(ctx *godog.ScenarioContext) {
-	tc := testContext{}
-	ctx.BeforeScenario(func(*godog.Scenario) {})
-	ctx.AfterScenario(func(s *godog.Scenario, err error) {
-		if err != nil {
-			fmt.Printf(
-				"Command line output for \"%s\"\nUsing parameters: %s\n%s",
-				s.GetName(),
-				tc.cmdInput.parameters,
-				tc.cmdResult.Output,
-			)
-		}
-	})
-	ctx.Step(`^the app runs with parameters "(.*)"$`, tc.theAppRunsWithParameters)
-	ctx.Step(`^the app exits without error$`, tc.theAppExitsWithoutError)
-	ctx.Step(`^the app exits with an error$`, tc.theAppExitsWithAnError)
-	ctx.Step(`^the app output contains "(.*)"$`, tc.theAppOutputContains)
-	ctx.Step(`^the app output does not contain "(.*)"$`, tc.theAppOutputDoesNotContain)
+	if err != nil {
+		assert.NoError(c, err)
+		return c.err
+	}
+
+	return nil
 }
