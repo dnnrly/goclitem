@@ -10,18 +10,20 @@ jobs:
     name: Validate
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: actions/setup-go@v1
+      - name: Checkout
+        uses: actions/checkout@v5
         with:
-          go-version: '1.19'
-      - name: Install dependencies
-        run: make deps
+          fetch-depth: 0
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version: stable
       - name: Unit test
         run: make ci-test
       - name: Linting
         run: make lint
       - name: Acceptance test
-        run: make build acceptance-test
+        run: make acceptance-test
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1
         env:
