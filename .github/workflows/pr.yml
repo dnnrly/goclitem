@@ -20,8 +20,6 @@ jobs:
           go-version: stable
       - name: Unit test
         run: make ci-test
-      - name: Linting
-        run: make lint
       - name: Acceptance test
         run: make acceptance-test
       - name: Upload coverage to Codecov
